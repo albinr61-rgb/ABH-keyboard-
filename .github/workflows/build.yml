@@ -15,8 +15,10 @@ jobs:
           distribution: temurin
           java-version: "17"
       - uses: android-actions/setup-android@v3
-      - name: Install NDK and CMake
-        run: sdkmanager --install "ndk;26.1.10909125" "cmake;3.22.1"
+        with:
+          packages: ""
+      - name: Install SDK, NDK and CMake
+        run: sdkmanager --install "platforms;android-34" "build-tools;34.0.0" "ndk;26.1.10909125" "cmake;3.22.1"
       - name: Fetch whisper.cpp
         run: git clone --depth 1 --branch v1.7.4 https://github.com/ggml-org/whisper.cpp project/third_party/whisper.cpp
       - uses: gradle/actions/setup-gradle@v4
